@@ -38,7 +38,7 @@
 
 #define NAND_READ_START		0x00
 #define NAND_READ_END		0x30
-#define NAND_STATUS		0x70
+#define NAND_STATUS			0x70
 
 extern void davinci_nand_init(struct nand_chip *nand);
 

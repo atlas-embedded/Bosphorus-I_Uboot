@@ -245,8 +245,12 @@ static int gen_get_link_speed(int phy_addr)
 
 	if (davinci_eth_phy_read(phy_addr, MII_STATUS_REG, &tmp) &&
 			(tmp & 0x04)) {
+/*
 #if defined(CONFIG_DRIVER_TI_EMAC_USE_RMII) && \
 		defined(CONFIG_MACH_DAVINCI_DA850_EVM)
+*/
+#if defined(CONFIG_DRIVER_TI_EMAC_USE_RMII) && \
+	defined(CONFIG_MACH_ATLAS_BOSPHORUSI)
 		davinci_eth_phy_read(phy_addr, PHY_ANLPAR, &tmp);
 
 		/* Speed doesn't matter, there is no setting for it in EMAC. */
@@ -353,9 +357,12 @@ static int davinci_eth_open(struct eth_device *dev, bd_t *bis)
 		clkdiv = readl(&adap_ewrap->EWCTL);
 	}
 #endif
-
+/*
 #if defined(CONFIG_DRIVER_TI_EMAC_USE_RMII) && \
 	defined(CONFIG_MACH_DAVINCI_DA850_EVM)
+*/
+#if defined(CONFIG_DRIVER_TI_EMAC_USE_RMII) && \
+	defined(CONFIG_MACH_ATLAS_BOSPHORUSI)
 	adap_ewrap->c0rxen = adap_ewrap->c1rxen = adap_ewrap->c2rxen = 0;
 	adap_ewrap->c0txen = adap_ewrap->c1txen = adap_ewrap->c2txen = 0;
 	adap_ewrap->c0miscen = adap_ewrap->c1miscen = adap_ewrap->c2miscen = 0;
@@ -514,8 +521,12 @@ static void davinci_eth_close(struct eth_device *dev)
 	writel(0, &adap_ewrap->EWCTL);
 #endif
 
+/*
 #if defined(CONFIG_DRIVER_TI_EMAC_USE_RMII) && \
 	defined(CONFIG_MACH_DAVINCI_DA850_EVM)
+*/
+#if defined(CONFIG_DRIVER_TI_EMAC_USE_RMII) && \
+	defined(CONFIG_MACH_ATLAS_BOSPHORUSI)
 	adap_ewrap->c0rxen = adap_ewrap->c1rxen = adap_ewrap->c2rxen = 0;
 	adap_ewrap->c0txen = adap_ewrap->c1txen = adap_ewrap->c2txen = 0;
 	adap_ewrap->c0miscen = adap_ewrap->c1miscen = adap_ewrap->c2miscen = 0;

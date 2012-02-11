@@ -136,6 +136,7 @@ static int init_baudrate (void)
 
 static int display_banner (void)
 {
+	printf ("display_banner - START");
 	printf ("\n\n%s\n\n", version_string);
 	debug ("U-Boot code: %08lX -> %08lX  BSS: -> %08lX\n",
 	       _TEXT_BASE,
@@ -283,12 +284,13 @@ void board_init_f (ulong bootflag)
 	memset ((void*)gd, 0, sizeof (gd_t));
 
 	gd->mon_len = _bss_end_ofs;
-
+	printf ("Init Sequence - START");
 	for (init_fnc_ptr = init_sequence; *init_fnc_ptr; ++init_fnc_ptr) {
 		if ((*init_fnc_ptr)() != 0) {
 			hang ();
 		}
 	}
+	printf ("Init Sequence - OK");
 
 	debug ("monitor len: %08lX\n", gd->mon_len);
 	/*
@@ -480,6 +482,8 @@ void board_init_r (gd_t *id, ulong dest_addr)
 	malloc_start = dest_addr - TOTAL_MALLOC_LEN;
 	mem_malloc_init (malloc_start, TOTAL_MALLOC_LEN);
 
+	puts ("\n\nU-Boot 2010.12, Bosphorus-I, r1_00, 2012-01-27\n");
+
 #if !defined(CONFIG_SYS_NO_FLASH)
 	puts ("FLASH: ");
 
@@ -506,7 +510,7 @@ void board_init_r (gd_t *id, ulong dest_addr)
 		hang ();
 	}
 #endif
-
+	
 #if defined(CONFIG_CMD_NAND)
 	puts ("NAND:  ");
 	nand_init();		/* go init the NAND */

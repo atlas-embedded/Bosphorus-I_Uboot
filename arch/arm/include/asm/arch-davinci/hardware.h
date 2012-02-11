@@ -1,4 +1,8 @@
 /*
+ * Copyright (C) 2011 ATLAS EMBEDDED SYSTEMS LTD. - http://www.atlas-embedded.com
+ *
+ * Based on hardware.h
+ * 
  * Copyright (C) 2007 Sergey Kubushyn <ksi@koi8.net>
  *
  * Based on:
@@ -391,9 +395,11 @@ struct davinci_pllc_regs {
 
 /* Clock IDs */
 enum davinci_clk_ids {
+	DAVINCI_DSP_CLKID  = 1,
 	DAVINCI_MMCSD_CLKID = 2,
 	DAVINCI_SPI0_CLKID = 2,
 	DAVINCI_UART2_CLKID = 2,
+        DAVINCI_EMIFA_CLKID = 3,
 	DAVINCI_MDIO_CLKID = 4,
 	DAVINCI_ARM_CLKID = 6,
 	DAVINCI_PLLM_CLKID = 0xff,

@@ -932,6 +932,9 @@ da850_omapl138_evm_config   \
 da850evm_config:	unconfig
 	@$(MKCONFIG) $(@:_config=) arm arm926ejs da8xxevm davinci davinci
 
+atlas_bosphorusI_config: unconfig
+	@$(MKCONFIG) $(@:_config=) arm arm926ejs atlas_bosphorusI davinci davinci
+
 davinci_dvevm_config :	unconfig
 	@$(MKCONFIG) $(@:_config=) arm arm926ejs dvevm davinci davinci
 
